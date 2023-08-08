@@ -14,6 +14,8 @@ jobs:
   release:
     if: github.repository == 'fwcd/arch-repo'
     runs-on: ubuntu-latest
+    container:
+      image: archlinux:base-devel
 
     steps:
     - uses: actions/checkout@v3
