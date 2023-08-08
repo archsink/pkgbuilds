@@ -34,10 +34,11 @@ jobs:
       run: |
         git add -A
         git commit -m "Update packages ($(date -I))" || true
-    - name: Set up build user
+    - name: Set up build user and directory permissions
       run: |
         useradd builder
-        chown -R builder:builder "$PWD"
+        chown -R builder:builder .
+        chmod -R a+rwX .
     - name: Build packages
       run: sudo -u builder ./build-packages
     - name: Publish release
