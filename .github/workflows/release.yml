@@ -39,6 +39,7 @@ jobs:
         useradd builder
         chown -R builder:builder .
         git submodule foreach 'find . -type d -exec chmod 777 {} \; && find . -type f -exec chmod 666 {} \;'
+        sudo -u builder 'git config --global protocol.file.allow always'
     - name: Build packages
       run: sudo -u builder ./build-packages
     - name: Publish release
