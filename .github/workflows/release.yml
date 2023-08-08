@@ -36,7 +36,7 @@ jobs:
         git commit -m "Update packages ($(date -I))" || true
     - name: Set up build user and directory permissions
       run: |
-        useradd builder
+        useradd -m builder
         chown -R builder:builder .
         git submodule foreach 'find . -type d -exec chmod 777 {} \; && find . -type f -exec chmod 666 {} \;'
         sudo -u builder git config --global protocol.file.allow always
