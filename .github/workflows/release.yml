@@ -26,13 +26,11 @@ jobs:
         submodules: true
     - name: Set up Git config
       run: |
+        git config --global --add safe.directory "$PWD"
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
     - name: Update packages
-      run: |
-        ls -la
-        whoami
-        git submodule update --remote
+      run: git submodule update --remote
     - name: Commit updates
       run: |
         git add -A
