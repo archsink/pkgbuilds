@@ -1,6 +1,6 @@
 # fwcd's Arch Repository
 
-An [unofficial package repository](https://wiki.archlinux.org/title/unofficial_user_repositories) for Arch Linux (`pacman`), mainly for packages intended to run on Raspberry Pis.
+An [unofficial package repository](https://wiki.archlinux.org/title/unofficial_user_repositories) hosting prebuilt/binary packages for Arch Linux (`pacman`), mainly sourced from the [AUR](https://aur.archlinux.org).
 
 ## Usage
 
