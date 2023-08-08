@@ -3,6 +3,12 @@
 set -e
 cd "$(dirname "$0")"
 
+# The packages to be built. Must be topologically sorted w.r.t dependencies.
+pkgs=(
+  nqptp-git
+  shairport-sync-git
+)
+
 if [ "$(uname -s)" != Linux ]; then
   echo "$0 must run on Linux!"
   exit 1
@@ -14,7 +20,9 @@ mkdir -p "$builddir"
 
 echo "==> Building the packages"
 # TODO: Other architectures (e.g. aarch64) with QEMU
-git submodule foreach "PKGDEST='$builddir' makepkg -s --noconfirm"
+for pkg in "${pkgs[@]}"; do
+  (cd "$pkg" && PKGDEST="$builddir" makepkg -si --noconfirm)
+done
 
 echo "==> Set up a package database"
 repo-add "$builddir/fwcd.db.tar.gz" "$builddir"/*.pkg.tar.zst
