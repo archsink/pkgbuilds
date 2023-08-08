@@ -1,6 +1,0 @@
-[submodule "shairport-sync-git"]
-	path = shairport-sync-git
-	url = ../arch-shairport-sync-git.git
-[submodule "nqptp-git"]
-	path = nqptp-git
-	url = ../arch-nqptp-git.git
