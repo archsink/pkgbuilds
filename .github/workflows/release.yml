@@ -30,10 +30,6 @@ jobs:
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
     - name: Update packages
       run: git submodule update --remote
-    - name: Commit updates
-      run: |
-        git add -A
-        git commit -m "Update packages ($(date -I))" || true
     - name: Set up build user and directory permissions
       run: |
         useradd -m builder
@@ -42,11 +38,17 @@ jobs:
         sudo -u builder git config --global protocol.file.allow always
     - name: Build packages
       run: sudo -u builder ./build-packages
+    - name: Commit updates
+      run: |
+        git add -A
+        git commit --allow-empty -m "Update packages ($(date -I))"
+    - name: Push changes
+      run: git push
     - name: Publish release
       if: github.ref == 'refs/heads/main'
+      env:
+        GH_TOKEN: ${{ github.token }}
       run: |
         tag="$(date -I)"
         gh release create --title "$tag" "$tag" || true
         gh release upload --clobber "$tag" build/*
-    - name: Push changes
-      run: git push
