@@ -16,6 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: archlinux:base-devel
+      options: --user nobody
 
     steps:
     - name: Install Git
