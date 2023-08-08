@@ -4,3 +4,6 @@
 [submodule "shairport-sync-git"]
 	path = shairport-sync-git
 	url = https://aur.archlinux.org/shairport-sync-git.git
+[submodule "alac-git"]
+	path = alac-git
+	url = https://aur.archlinux.org/alac-git.git
