@@ -1,9 +1,6 @@
-[submodule "nqptp-git"]
-	path = nqptp-git
-	url = https://aur.archlinux.org/nqptp-git.git
 [submodule "shairport-sync-git"]
 	path = shairport-sync-git
-	url = https://aur.archlinux.org/shairport-sync-git.git
-[submodule "alac-git"]
-	path = alac-git
-	url = https://aur.archlinux.org/alac-git.git
+	url = https://github.com/fwcd/arch-shairport-sync-git.git
+[submodule "nqptp-git"]
+	path = nqptp-git
+	url = https://github.com/fwcd/arch-nqptp-git.git
