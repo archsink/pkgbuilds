@@ -1,0 +1,41 @@
+name: Release
+
+on:
+  push:
+  schedule:
+  # Run every day at 5:20
+  - cron: '20 5 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    if: github.repository == 'fwcd/arch-repo'
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: true
+    - name: Set up Git user
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+    - name: Update packages
+      run: git submodule update --remote
+    - name: Commit updates
+      run: |
+        git add -A
+        git commit -m "Update packages ($(date -I))" || true
+    - name: Build packages
+      run: ./build-packages
+    - name: Publish release
+      if: github.ref == 'refs/heads/main'
+      run: |
+        tag="$(date -I)"
+        gh release create --title "$tag" "$tag" || true
+        gh release upload --clobber "$tag" build/*
+    - name: Push changes
+      run: git push
