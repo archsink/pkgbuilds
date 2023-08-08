@@ -16,11 +16,10 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: archlinux:base-devel
-      options: --user nobody
 
     steps:
-    - name: Install Git
-      run: pacman -Sy --noconfirm git
+    - name: Install system dependencies
+      run: pacman -Sy --noconfirm git sudo
     - uses: actions/checkout@v3
       with:
         submodules: true
@@ -35,8 +34,12 @@ jobs:
       run: |
         git add -A
         git commit -m "Update packages ($(date -I))" || true
+    - name: Set up build user
+      run: |
+        useradd builder
+        chown -R builder:builder "$PWD"
     - name: Build packages
-      run: ./build-packages
+      run: sudo -u builder ./build-packages
     - name: Publish release
       if: github.ref == 'refs/heads/main'
       run: |
