@@ -38,13 +38,8 @@ jobs:
       run: |
         useradd builder
         chown -R builder:builder .
-        chmod -R a+rwX .
-    - name: Output debug info
-      run: |
-        echo "==> $PWD"
-        ls -la .
-        echo "==> nqptp-git"
-        ls -la nqptp-git
+        find . -type d -exec chmod 777 {} \;
+        find . -type f -exec chmod 666 {} \;
     - name: Build packages
       run: sudo -u builder ./build-packages
     - name: Publish release
