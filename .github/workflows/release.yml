@@ -29,7 +29,10 @@ jobs:
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
     - name: Update packages
-      run: git submodule update --remote
+      run: |
+        ls -l
+        whoami
+        git submodule update --remote
     - name: Commit updates
       run: |
         git add -A
