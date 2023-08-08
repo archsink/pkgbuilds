@@ -1,0 +1,28 @@
+#!/bin/bash
+
+set -e
+cd "$(dirname "$0")"
+
+if [ "$(uname -s)" != Linux ]; then
+  echo "$0 must run on Linux!"
+  exit 1
+fi
+
+echo "==> Setting up build directory"
+builddir="$PWD/build"
+mkdir -p "$builddir"
+
+echo "==> Building the packages"
+# TODO: Other architectures (e.g. aarch64) with QEMU
+git submodule foreach "PKGDEST='$builddir' makepkg -s --noconfirm"
+
+echo "==> Set up a package database"
+repo-add "$builddir/fwcd.db.tar.gz" "$builddir"/*.pkg.tar.zst
+
+echo "==> Replacing symlinks"
+(
+  cd "$builddir"
+  for file in *.db *.files; do
+    cp --remove-destination "$(readlink "$file")" "$file"
+  done
+)
