@@ -16,6 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: archlinux:base-devel
+      options: --user root
 
     steps:
     - name: Install Git
@@ -25,7 +26,6 @@ jobs:
         submodules: true
     - name: Set up Git config
       run: |
-        git config --global --add safe.directory "${{ github.workspace }}"
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
     - name: Update packages
