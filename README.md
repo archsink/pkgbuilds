@@ -9,6 +9,7 @@ Add the following to your `/etc/pacman.conf`:
 ```
 [fwcd]
 Server = https://github.com/fwcd/arch-repo/releases/latest/download
+SigLevel = Never
 ```
 
 ## See also
