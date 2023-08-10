@@ -30,6 +30,16 @@ source_aarch64=(
   "k3s-${pkgver}-aarch64::${_releaseurl}/k3s-arm64"
 )
 
+sha256sums=(
+  SKIP
+  "6dae4b76712fc5ad7e515ad8a14fee0b961bfb0cd624d998ac954c233aa90ff5"
+  "667199fa6b811dde3aef3e626e2695a566ad64c9a03d19d0c94a1f104a7612d0"
+)
+
+sha256sums_x86_64=(SKIP)
+sha256sums_armv7h=(SKIP)
+sha256sums_aarch64=(SKIP)
+
 pkgver() {
   cd k3s-git
   git describe --tags --abbrev=0
