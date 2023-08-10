@@ -1,5 +1,7 @@
 # fwcd's Arch Repository
 
+[![Build](https://github.com/fwcd/arch-repo/actions/workflows/build.yml/badge.svg)](https://github.com/fwcd/arch-repo/actions/workflows/build.yml)
+
 An [unofficial package repository](https://wiki.archlinux.org/title/unofficial_user_repositories) hosting prebuilt/binary packages for Arch Linux (`pacman`), mainly sourced from the [AUR](https://aur.archlinux.org).
 
 ## Usage
