@@ -11,6 +11,7 @@ fi
 echo "==> Setting up builder user and group"
 groupadd -g "$BUILDER_GID" builder
 useradd -m -u "$BUILDER_UID" -g "$BUILDER_GID" builder
+echo "builder ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 echo "==> Installing system dependencies"
 pacman -Syu --noconfirm --needed base-devel git sudo
