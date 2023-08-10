@@ -9,7 +9,7 @@ mkdir -p "$dbdir"
 
 echo "==> Copying packages"
 builddir="$PWD/build"
-cp "$builddir"/**/*.pkg.tar.zst "$dbdir"
+cp "$builddir"/**/*.pkg.tar.{zst,xz} "$dbdir"
 
 echo "==> Setting up a package database"
 repo-add "$dbdir/fwcd.db.tar.gz" "$dbdir"/*.pkg.tar.zst
