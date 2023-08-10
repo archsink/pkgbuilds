@@ -80,6 +80,7 @@ jobs:
         git add -A
         git commit --allow-empty -m "Update packages ($(date '+%Y-%m-%d-%H-%M'))"
     - name: Push changes
+      if: github.ref == 'refs/heads/main'
       run: git push
     - name: Publish release
       if: github.ref == 'refs/heads/main'
