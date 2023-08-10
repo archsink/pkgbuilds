@@ -29,6 +29,7 @@ for pkg in "${pkgs[@]}"; do
 
     # Copy the generated .SRCINFO and (potentially) autobumped PKGBUILD
     buildsrcdir="$builddir/src/$pkg"
+    mkdir -p "$buildsrcdir"
     makepkg --printsrcinfo > "$buildsrcdir/.SRCINFO"
     cp PKGBUILD "$buildsrcdir"
   )
