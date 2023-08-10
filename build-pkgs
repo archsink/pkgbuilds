@@ -5,6 +5,7 @@ cd "$(dirname "$0")"
 
 # The packages to be built. Must be topologically sorted w.r.t dependencies.
 pkgs=(
+  k3s-bin
   alac-git
   nqptp-git
   shairport-sync-git
