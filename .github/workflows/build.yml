@@ -19,10 +19,9 @@ jobs:
         - platform: linux/amd64
           arch: x86_64
           image: docker.io/archlinux:base-devel
-        # FIXME: Temporarily disabled until release stage is fixed
-        # - platform: linux/arm64
-        #   arch: aarch64
-        #   image: ghcr.io/fwcd/archlinuxarm-docker
+        - platform: linux/arm64
+          arch: aarch64
+          image: ghcr.io/fwcd/archlinuxarm-docker
 
     steps:
     - uses: actions/checkout@v3
