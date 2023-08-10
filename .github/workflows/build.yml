@@ -69,6 +69,8 @@ jobs:
         --workdir /src/arch-repo
         --entrypoint /src/arch-repo/build-db
         archlinux
+    - name: List db packages
+      run: ls -l db
     - name: Set up Git config
       run: |
         git config --global user.name "github-actions[bot]"
