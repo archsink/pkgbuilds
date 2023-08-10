@@ -42,7 +42,7 @@ sha256sums_aarch64=(SKIP)
 
 pkgver() {
   cd k3s-git
-  git describe --tags --abbrev=0
+  git describe --tags --abbrev=0 | sed 's/^v//g'
 }
 
 package() {
