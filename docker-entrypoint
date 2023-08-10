@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -e
+cd "$(dirname "$0")"
+
+if [ -z "$BUILDER_UID" ] || [ -z "$BUILDER_GID" ]; then
+  echo "Please make sure that BUILDER_UID and BUILDER_GID are set!"
+  exit 1
+fi
+
+echo "==> Setting up builder user"
+useradd -m -u "$BUILDER_UID" -g "$BUILDER_GID" builder
+
+echo "==> Installing system dependencies"
+pacman -S git
+
+echo "==> Building packages (current architecture: $(uname -m))"
+sudo -u builder ./build-pkgs

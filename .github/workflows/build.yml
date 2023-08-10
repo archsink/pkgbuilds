@@ -35,11 +35,12 @@ jobs:
         docker run
         --tty
         --rm
+        --env BUILDER_UID=$(id -u)
+        --env BUILDER_GID=$(id -g)
         --platform "${{ matrix.platform }}"
-        --user "$(id -u "$USER"):$(id -g "$USER")"
         --mount type=bind,src="$PWD",dst=/src/arch-repo
         --workdir /src/arch-repo
-        --entrypoint /src/arch-repo/install-deps-and-build-pkgs
+        --entrypoint /src/arch-repo/docker-entrypoint
         ${{ matrix.image }}
     - name: Upload build artifacts
       uses: actions/upload-artifact@v3
