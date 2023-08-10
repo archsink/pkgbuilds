@@ -8,7 +8,8 @@ if [ -z "$BUILDER_UID" ] || [ -z "$BUILDER_GID" ]; then
   exit 1
 fi
 
-echo "==> Setting up builder user"
+echo "==> Setting up builder user and group"
+groupadd -g "$BUILDERGID" builder
 useradd -m -u "$BUILDER_UID" -g "$BUILDER_GID" builder
 
 echo "==> Installing system dependencies"
