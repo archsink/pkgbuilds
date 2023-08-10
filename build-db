@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -e
+cd "$(dirname "$0")"
+
+echo "==> Setting up database directory"
+dbdir="$PWD/db"
+mkdir -p "$dbdir"
+
+echo "==> Copying packages"
+builddir="$PWD/build"
+cp "$builddir"/**/*.pkg.tar.zst "$dbdir"
+
+echo "==> Setting up a package database"
+repo-add "$dbdir/fwcd.db.tar.gz" "$dbdir"/*.pkg.tar.zst
+
+echo "==> Replacing symlinks"
+(
+  cd "$dbdir"
+  for file in *.db *.files; do
+    cp --remove-destination "$(readlink "$file")" "$file"
+  done
+)
