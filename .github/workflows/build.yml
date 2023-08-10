@@ -18,7 +18,7 @@ jobs:
         include:
         - platform: linux/amd64
           arch: x86_64
-          image: docker.io/archlinux
+          image: docker.io/archlinux:base-devel
         - platform: linux/arm64
           arch: aarch64
           image: ghcr.io/fwcd/archlinuxarm-docker
