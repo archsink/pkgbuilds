@@ -9,7 +9,7 @@ if [ -z "$BUILDER_UID" ] || [ -z "$BUILDER_GID" ]; then
 fi
 
 echo "==> Setting up builder user and group"
-groupadd -g "$BUILDERGID" builder
+groupadd -g "$BUILDER_GID" builder
 useradd -m -u "$BUILDER_UID" -g "$BUILDER_GID" builder
 
 echo "==> Installing system dependencies"
