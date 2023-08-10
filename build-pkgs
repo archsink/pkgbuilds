@@ -20,22 +20,17 @@ builddir="$PWD/build"
 mkdir -p "$builddir"
 
 echo "==> Building the packages"
-# TODO: Other architectures (e.g. aarch64) with QEMU
 for pkg in "${pkgs[@]}"; do
   (
     cd "$pkg"
+
+    # Build the package
     PKGDEST="$builddir" makepkg -si --noconfirm
-    makepkg --printsrcinfo > .SRCINFO
+
+    # Copy the generated .SRCINFO and (potentially) autobumped PKGBUILD
+    buildsrcdir="$builddir/src/$pkg"
+    mkdir -p "$buildsrcdir"
+    makepkg --printsrcinfo > "$buildsrcdir/.SRCINFO"
+    cp PKGBUILD "$buildsrcdir"
   )
 done
-
-echo "==> Set up a package database"
-repo-add "$builddir/fwcd.db.tar.gz" "$builddir"/*.pkg.tar.zst
-
-echo "==> Replacing symlinks"
-(
-  cd "$builddir"
-  for file in *.db *.files; do
-    cp --remove-destination "$(readlink "$file")" "$file"
-  done
-)
