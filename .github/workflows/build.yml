@@ -33,7 +33,6 @@ jobs:
     - name: Build packages (${{ matrix.platform }})
       run: >
         docker run
-        --tty
         --rm
         --env BUILDER_UID=$(id -u)
         --env BUILDER_GID=$(id -g)
