@@ -9,10 +9,10 @@ mkdir -p "$dbdir"
 
 echo "==> Copying packages"
 builddir="$PWD/build"
-cp "$builddir"/**/*.pkg.tar.{zst,xz} "$dbdir"
+cp "$builddir"/**/*.pkg.tar.* "$dbdir"
 
 echo "==> Setting up a package database"
-repo-add "$dbdir/fwcd.db.tar.gz" "$dbdir"/*.pkg.tar.zst
+repo-add "$dbdir/fwcd.db.tar.gz" "$dbdir"/*.pkg.tar.*
 
 echo "==> Replacing symlinks"
 (
