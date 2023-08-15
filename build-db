@@ -7,9 +7,15 @@ echo "==> Setting up database directory"
 dbdir="$PWD/db"
 mkdir -p "$dbdir"
 
-echo "==> Copying packages"
+echo "==> Compressing and copying packages"
 builddir="$PWD/build"
-cp "$builddir"/**.pkg.tar.* "$dbdir"
+(
+  cd "$builddir"
+  for pkg in *.pkg.tar.*; do
+    echo "Compressing $pkg"
+    zstd -o "$dbdir/$pkg.zst" "$builddir"
+  done
+)
 
 echo "==> Setting up a package database"
 repo-add "$dbdir/fwcd.db.tar.gz" "$dbdir"/*.pkg.tar.*

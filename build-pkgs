@@ -27,13 +27,16 @@ for pkg in "${pkgs[@]}"; do
   (
     cd "$pkg"
 
-    # Build the package
-    PKGDEST="$builddir" makepkg -si --noconfirm
+    # Build the package (and compress later to speed things up under emulation)
+    PKGDEST="$builddir" PKGEXT='.pkg.tar' makepkg -si --noconfirm
 
     # Copy the generated .SRCINFO and (potentially) autobumped PKGBUILD
     buildsrcdir="$builddir/src/$pkg"
     mkdir -p "$buildsrcdir"
     makepkg --printsrcinfo > "$buildsrcdir/.SRCINFO"
     cp PKGBUILD "$buildsrcdir"
+
+    # Clean up the src and pkg directories to save space
+    rm -rf src pkg
   )
 done
