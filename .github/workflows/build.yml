@@ -40,3 +40,12 @@ jobs:
         --workdir "/src/${{ github.repository }}"
         --entrypoint "/src/${{ github.repository }}"/docker-entrypoint
         ${{ matrix.image }}
+    - name: Build package database
+      run: >
+        docker run
+        --rm
+        --user "$(id -u):$(id -g)"
+        --mount type=bind,src="$PWD",dst="/src/${{ github.repository }}"
+        --workdir "/src/${{ github.repository }}"
+        --entrypoint "/src/${{ github.repository }}/build-db"
+        archlinux
