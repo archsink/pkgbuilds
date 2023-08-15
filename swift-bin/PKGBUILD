@@ -5,11 +5,12 @@
 
 pkgname=swift-bin
 pkgver=5.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary builds of the Swift programming language"
 arch=('x86_64' 'aarch64')
 url="https://www.swift.org/"
 license=('apache')
+makedepends=('patchelf')
 depends=('libutil-linux' 'libxml2' 'ncurses')
 optdepends=('python36: required for REPL')
 options=('!strip')
@@ -26,6 +27,18 @@ source_aarch64=("https://download.swift.org/swift-$pkgver-release/ubuntu$_ubuntu
 
 sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
+
+prepare() {
+  case "$CARCH" in
+    x86_64) _suffix="";;
+    *) _suffix="-$CARCH";;
+  esac
+
+  # Patch the ncurses dependency to the one provided by the ncurses package
+  # TODO: This currently emits a few warnings for non-ELF executables, find a more elegant way to deal with them
+  find "${srcdir}/swift-$pkgver-RELEASE-ubuntu$_ubuntumajor.$_ubuntuminor$_suffix" -type f -executable -exec \
+    patchelf --replace-needed libncurses.so.6 libncursesw.so.6 {} \;
+}
 
 package() {
   case "$CARCH" in
@@ -44,6 +57,4 @@ package() {
 
   install -dm755 "${pkgdir}/etc/ld.so.conf.d"
   echo '/usr/lib/swift/lib/swift/linux' >> "${pkgdir}/etc/ld.so.conf.d/swift.conf"
-
-  # TODO: patchelf libncurses.so.6 -> libncursesw.so.6
 }
