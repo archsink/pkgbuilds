@@ -16,10 +16,19 @@ jobs:
       matrix:
         include:
         - platform: linux/amd64
+          arch: x86_64
           image: docker.io/archlinux:base-devel
+        - platform: linux/arm64
+          arch: aarch64
+          image: ghcr.io/fwcd/archlinuxarm-docker
 
     steps:
     - uses: actions/checkout@v3
+    - name: Set up QEMU
+      if: matrix.platform != 'linux/amd64'
+      uses: docker/setup-qemu-action@v2
+      with:
+        platforms: ${{ matrix.platform }}
     - name: Build packages (${{ matrix.platform }})
       run: >
         docker run
