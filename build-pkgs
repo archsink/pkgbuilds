@@ -3,20 +3,18 @@
 set -e
 cd "$(dirname "$0")"
 
-# The packages to be built. Must be topologically sorted w.r.t dependencies.
-pkgs=(
-  k3s-bin
-  alac-git
-  nqptp-git
-  shairport-sync-git
-  swift-bin
-  yay
-)
-
 if [ "$(uname -s)" != Linux ]; then
   echo "$0 must run on Linux!"
   exit 1
 fi
+
+echo "==> Reading packages..."
+pkgs=()
+while IFS= read -r line; do
+  if [[ "$line" != "#"* ]] && [[ -n "$line" ]]; then
+    pkgs+=("$line")
+  fi
+done < packages.txt
 
 echo "==> Setting up build directory"
 builddir="$PWD/build"
