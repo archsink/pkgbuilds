@@ -7,7 +7,7 @@ from typing import Optional
 import urllib.request
 
 def var_pattern(name: str) -> re.Pattern:
-    return re.compile(r'^(' + re.escape(name) + r'=["\']?)(?P<value>[^"\'\s]+)(["\']?)$', flags=re.MULTILINE)
+    return re.compile(r'^(?P<prefix>' + re.escape(name) + r'=["\']?)(?P<value>[^"\'\s]+)(?P<suffix>["\']?)$', flags=re.MULTILINE)
 
 ROOT = Path(__file__).resolve().parent
 PKGVER = var_pattern('pkgver')
@@ -34,7 +34,7 @@ def parse(pattern: re.Pattern, pkgbuild: str) -> Optional[str]:
     return m.group('value') if m else None
 
 def update(pattern: re.Pattern, new_value: str, pkgbuild: str) -> str:
-    return pattern.sub(f'\\1{new_value}\\3', pkgbuild)
+    return pattern.sub(r'\g<prefix>' + new_value + r'\g<suffix>', pkgbuild)
 
 def main():
     print('==> Reading packages')
