@@ -35,9 +35,6 @@ sha256sums_x86_64=('7438aade7f5aaab3904f95333b67aa072cee28fa06748b6ee66ebcbd3e5b
 sha256sums_armv7h=('ce347497dc900e8e40aa3620dc1122ea416f9447d8325d50ed6a0ec9eed10574')
 sha256sums_aarch64=('f5ecea7b398a99aa1b03dd1960cd753bd3aed210b32aeca1197a790c1a188f24')
 
-
-
-
 package() {
   install -Dm 755 $srcdir/k3s-${pkgver}-${CARCH} $pkgdir/usr/bin/k3s
 
