@@ -1,4 +1,4 @@
-name: Build
+name: Bump
 
 on:
   schedule:
@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 jobs:
-  build:
+  bump:
     runs-on: ubuntu-latest
 
     steps:
