@@ -1,0 +1,68 @@
+#!/usr/bin/env python3
+
+from pathlib import Path
+
+import re
+from typing import Optional
+import urllib.request
+
+def var_pattern(name: str) -> re.Pattern:
+    return re.compile(r'^(?P<prefix>' + re.escape(name) + r'=["\']?)(?P<value>[^"\'\s]+)(?P<suffix>["\']?)$', flags=re.MULTILINE)
+
+ROOT = Path(__file__).resolve().parent
+PKGVER = var_pattern('pkgver')
+PKGREL = var_pattern('pkgrel')
+
+def read_packages() -> list[str]:
+    with open(ROOT / 'packages.txt', 'r') as f:
+        return [l.strip() for l in f.readlines() if l.strip() and not l.startswith('#')]
+
+def fetch_aur_pkgbuild(pkg: str) -> str:
+    with urllib.request.urlopen(f'https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h={pkg}') as f:
+        return f.read().decode('utf-8')
+
+def read_local_pkgbuild(pkg: str) -> str:
+    with open(ROOT / pkg / 'PKGBUILD', 'r') as f:
+        return f.read()
+
+def write_local_pkgbuild(pkgbuild: str, pkg: str) -> str:
+    with open(ROOT / pkg / 'PKGBUILD', 'w') as f:
+        return f.write(pkgbuild)
+
+def parse(pattern: re.Pattern, pkgbuild: str) -> Optional[str]:
+    m = pattern.search(pkgbuild)
+    return m.group('value') if m else None
+
+def update(pattern: re.Pattern, new_value: str, pkgbuild: str) -> str:
+    return pattern.sub(r'\g<prefix>' + new_value + r'\g<suffix>', pkgbuild)
+
+def main():
+    print('==> Reading packages')
+    pkgs = read_packages()
+
+    print('==> Updating packages')
+    for pkg in pkgs:
+        aur_pkgbuild = fetch_aur_pkgbuild(pkg)
+        local_pkgbuild = read_local_pkgbuild(pkg)
+
+        local_pkgver = parse(PKGVER, local_pkgbuild)
+        local_pkgrel = parse(PKGREL, local_pkgbuild)
+
+        aur_pkgver = parse(PKGVER, aur_pkgbuild)
+        aur_pkgrel = parse(PKGREL, aur_pkgbuild)
+
+        local_verrel = f'{local_pkgver}-{local_pkgrel}'
+        aur_verrel = f'{aur_pkgver}-{aur_pkgrel}'
+
+        if local_verrel < aur_verrel:
+            print(f'{pkg}: {local_verrel} -> {aur_verrel}')
+
+            local_pkgbuild = update(PKGVER, aur_pkgver, local_pkgbuild)
+            local_pkgbuild = update(PKGREL, aur_pkgrel, local_pkgbuild)
+
+            write_local_pkgbuild(local_pkgbuild, pkg)
+        else:
+            print(f'{pkg}: {local_verrel} is up-to-date')
+
+if __name__ == '__main__':
+    main()
