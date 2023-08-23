@@ -15,8 +15,8 @@ pkgbase = swift-bin
 	replaces = swift-language-bin
 	options = !strip
 	source_x86_64 = https://download.swift.org/swift-5.8.1-release/ubuntu2204/swift-5.8.1-RELEASE/swift-5.8.1-RELEASE-ubuntu22.04.tar.gz
-	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = 2eb8105db0288443bda214b4b84d898970d1fecf08f0f5dcd5bd45bef528a4f7
 	source_aarch64 = https://download.swift.org/swift-5.8.1-release/ubuntu2204-aarch64/swift-5.8.1-RELEASE/swift-5.8.1-RELEASE-ubuntu22.04-aarch64.tar.gz
-	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = 3235f519c9ca7473346ac560aa281a801bf7174d3ac466be24d742148187929d
 
 pkgname = swift-bin
