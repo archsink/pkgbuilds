@@ -45,7 +45,7 @@ depends=(
   'upower'
   'wavpack'
 )
-makedepends=('git' 'lv2' 'qt5-tools' 'cmake')
+makedepends=('git' 'lv2' 'qt5-tools' 'cmake' 'ninja')
 provides=('mixxx')
 conflicts=('mixxx')
 source=("${pkgname%-*}::git+https://github.com/mixxxdj/mixxx.git"
@@ -61,7 +61,7 @@ pkgver() {
 
 prepare() {
   mkdir -p "$srcdir/${pkgname%-*}/build"
-  cmake -S $srcdir/${pkgname%-*} -B $srcdir/${pkgname%-*}/build \
+  cmake -S $srcdir/${pkgname%-*} -G Ninja -B $srcdir/${pkgname%-*}/build \
   -DCMAKE_INSTALL_PREFIX=/usr \
   -DINSTALL_USER_UDEV_RULES=OFF \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
