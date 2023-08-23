@@ -24,7 +24,7 @@ echo "==> Setting up builder user (UID: $BUILDER_UID)"
 useradd -m -u "$BUILDER_UID" -g "$BUILDER_GID" builder
 
 echo "==> Installing system dependencies"
-pacman -Syu --noconfirm --needed base-devel git sudo
+pacman -Syu --noconfirm --needed base-devel git sudo pacman-contrib
 
 echo "==> Setting up sudoers"
 for user in root builder; do
