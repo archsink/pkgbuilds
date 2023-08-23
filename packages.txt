@@ -4,4 +4,5 @@ alac-git
 nqptp-git
 shairport-sync-git
 swift-bin
+paru
 yay
