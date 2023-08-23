@@ -21,11 +21,13 @@ jobs:
       run: >
         docker run
         --rm
-        --user "$(id -u):$(id -g)"
+        --env BUILDER_UID=$(id -u)
+        --env BUILDER_GID=$(id -g)
         --mount type=bind,src="$PWD",dst="/src/${{ github.repository }}"
         --workdir "/src/${{ github.repository }}"
-        --entrypoint "/src/${{ github.repository }}/bump-derived"
+        --entrypoint "/src/${{ github.repository }}/with-builder-user"
         archlinux:base-devel
+        ./bump-derived
     - name: Set up Git config
       run: |
         git config --global user.name "github-actions[bot]"

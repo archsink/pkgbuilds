@@ -31,5 +31,5 @@ for user in root builder; do
   echo "$user ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
 done
 
-echo "==> Building packages (current architecture: $(uname -m))"
-sudo -u builder ./build-pkgs
+echo "==> Running '$@' under builder user (current architecture: $(uname -m))"
+sudo -u builder "$@"
