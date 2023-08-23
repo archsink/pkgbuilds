@@ -49,9 +49,9 @@ makedepends=('git' 'lv2' 'qt5-tools' 'cmake')
 provides=('mixxx')
 conflicts=('mixxx')
 source=("${pkgname%-*}::git+https://github.com/mixxxdj/mixxx.git"
-    'mixxx.install')
-md5sums=('SKIP'
-     '321b9cca3ed690fcf57e7ac1e99109c2')
+        'mixxx.install')
+sha256sums=('SKIP'
+            '8f2db8c423cce9685df8ce010dc1dfbf48d0961e7a453d40c495220bf3a272ec')
 install='mixxx.install'
 
 pkgver() {
