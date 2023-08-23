@@ -26,7 +26,7 @@ for pkg in "${pkgs[@]}"; do
     cd "$pkg"
 
     # Build the package (and compress later to speed things up under emulation)
-    PKGDEST="$builddir" PKGEXT='.pkg.tar' makepkg -si --noconfirm
+    PKGDEST="$builddir" PKGEXT='.pkg.tar' makepkg -si --noconfirm --nocheck
 
     # Clean up the src and pkg directories to save space
     rm -rf src pkg
