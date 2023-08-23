@@ -13,8 +13,14 @@ if [ -z "$BUILDER_UID" ] || [ -z "$BUILDER_GID" ]; then
   exit 1
 fi
 
-echo "==> Setting up builder user and group"
-groupadd -g "$BUILDER_GID" builder
+if [ $(getent group "$BUILDER_GID") ]; then
+  echo "==> Warning: Group with GID $BUILDER_GID already exists, the existing group will be used"
+else
+  echo "==> Setting up builder group (GID: $BUILDER_GID)"
+  groupadd -g "$BUILDER_GID" builder
+fi
+
+echo "==> Setting up builder user (UID: $BUILDER_UID)"
 useradd -m -u "$BUILDER_UID" -g "$BUILDER_GID" builder
 
 echo "==> Installing system dependencies"
