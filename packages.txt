@@ -5,4 +5,4 @@ nqptp-git
 shairport-sync-git
 swift-bin
 paru-bin
-yay
+yay-bin
