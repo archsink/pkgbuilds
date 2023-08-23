@@ -1,0 +1,38 @@
+name: Build
+
+on:
+  schedule:
+  # Run every day at 3:20
+  - cron: '20 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Bump versions via the AUR
+      run: ./bump-versions
+    - name: Bump derived info
+      run: >
+        docker run
+        --rm
+        --user "$(id -u):$(id -g)"
+        --mount type=bind,src="$PWD",dst="/src/${{ github.repository }}"
+        --workdir "/src/${{ github.repository }}"
+        --entrypoint "/src/${{ github.repository }}/bump-derived"
+        archlinux:base-devel
+    - name: Set up Git config
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+    - name: Commit updates
+      run: |
+        git add -A
+        git commit -m "Bump packages ($(date '+%Y-%m-%d-%H-%M'))" || true 
+    - name: Push updates
+      run: git push
