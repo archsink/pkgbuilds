@@ -9,6 +9,7 @@ pkgbase = paru-bin
 	license = GPL3
 	depends = git
 	depends = pacman
+	depends = openssl-1.1
 	optdepends = asp: downloading repo pkgbuilds
 	optdepends = bat: colored pkgbuild printing
 	optdepends = devtools: build in chroot
