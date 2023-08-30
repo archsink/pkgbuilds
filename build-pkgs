@@ -29,7 +29,7 @@ for pkg in "${pkgs[@]}"; do
     if PKGDEST="$builddir" PKGEXT='.pkg.tar' makepkg -si --noconfirm --nocheck; then
       echo "$pkg built successfully"
     else
-      echo "::warning title={$pkg could not be built}::See the build logs for details"
+      echo "::warning title=$pkg could not be built::See the build logs for details"
     fi
 
     # Clean up the src and pkg directories to save space
