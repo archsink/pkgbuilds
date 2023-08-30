@@ -17,10 +17,8 @@ jobs:
         include:
         - platform: linux/amd64
           arch: x86_64
-          image: docker.io/archlinux:base-devel
         - platform: linux/arm64
           arch: aarch64
-          image: ghcr.io/fwcd/archlinuxarm-docker
 
     steps:
     - uses: actions/checkout@v3
@@ -39,7 +37,7 @@ jobs:
         --mount type=bind,src="$PWD",dst="/src/${{ github.repository }}"
         --workdir "/src/${{ github.repository }}"
         --entrypoint "/src/${{ github.repository }}/with-builder-user"
-        ${{ matrix.image }}
+        ghcr.io/fwcd/archlinux
         ./build-pkgs
     - name: Build package database
       run: >
@@ -48,5 +46,5 @@ jobs:
         --user "$(id -u):$(id -g)"
         --mount type=bind,src="$PWD",dst="/src/${{ github.repository }}"
         --workdir "/src/${{ github.repository }}"
-        archlinux
+        ghcr.io/fwcd/archlinux
         ./build-db
