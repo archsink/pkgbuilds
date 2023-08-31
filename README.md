@@ -23,5 +23,5 @@ SigLevel = Never
 
 ## See also
 
-- [`archlinuxarm-images`](https://github.com/fwcd/archlinuxarm-images.git) (Unofficial prepartitioned images of Arch Linux ARM)
-- [`archlinuxarm-docker`](https://github.com/fwcd/archlinuxarm-docker.git) (Unofficial Docker images of Arch Linux ARM)
+- [`docker-archlinux`](https://github.com/fwcd/docker-archlinux) (Unofficial multi-platform Docker images of Arch Linux)
+- [`archlinuxarm-images`](https://github.com/fwcd/archlinuxarm-images) (Unofficial prepartitioned images of Arch Linux ARM)
