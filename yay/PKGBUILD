@@ -7,6 +7,8 @@ arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/Jguer/yay"
 options=(!lto)
 license=('GPL3')
+conflicts=('yay-bin')
+replaces=('yay-bin')
 depends=(
   'pacman>5'
   'git'
