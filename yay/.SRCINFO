@@ -1,3 +1,4 @@
+<<<<<<< HEAD:yay-bin/.SRCINFO
 pkgbase = yay-bin
 	pkgdesc = Yet another yogurt. Pacman wrapper and AUR helper written in go. Pre-compiled.
 	pkgver = 12.1.2
@@ -7,10 +8,28 @@ pkgbase = yay-bin
 	arch = aarch64
 	arch = armv7h
 	license = GPL3
+=======
+pkgbase = yay
+	pkgdesc = Yet another yogurt. Pacman wrapper and AUR helper written in Go.
+	pkgver = 12.1.2
+	pkgrel = 1
+	url = https://github.com/Jguer/yay
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	arch = riscv64
+	license = GPL3
+	makedepends = go>=1.19
+>>>>>>> parent of bb6024f (Replace `yay` with `yay-bin`):yay/.SRCINFO
 	depends = pacman>5
 	depends = git
 	optdepends = sudo: privilege elevation
 	optdepends = doas: privilege elevation
+<<<<<<< HEAD:yay-bin/.SRCINFO
 	provides = yay
 	conflicts = yay
 	source_x86_64 = https://github.com/Jguer/yay/releases/download/v12.1.2/yay_12.1.2_x86_64.tar.gz
@@ -21,3 +40,10 @@ pkgbase = yay-bin
 	sha256sums_armv7h = c92e9651f62a2bb102045814d4df2f1990331d9aa35def399f256d64ff63f154
 
 pkgname = yay-bin
+=======
+	options = !lto
+	source = yay-12.1.2.tar.gz::https://github.com/Jguer/yay/archive/v12.1.2.tar.gz
+	sha256sums = 2bd07d36b3781261c54b0ad8c085682612ba30c4392a1154b215e52456d4ca73
+
+pkgname = yay
+>>>>>>> parent of bb6024f (Replace `yay` with `yay-bin`):yay/.SRCINFO
