@@ -45,7 +45,7 @@ depends=(
   'upower'
   'wavpack'
 )
-makedepends=('git' 'lv2' 'qt6-tools' 'cmake' 'gtest' 'benchmark')
+makedepends=('git' 'lv2' 'qt6-tools' 'cmake' 'ninja' 'gtest' 'benchmark')
 provides=('mixxx')
 conflicts=('mixxx')
 source=("${pkgname%-*}::git+https://github.com/mixxxdj/mixxx.git"
