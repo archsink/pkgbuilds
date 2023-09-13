@@ -3,13 +3,13 @@
 # Contributor: regreddit <nik.martin@gmail.com>
 
 _pkgname=mixxx
-pkgname=$_pkgname-git
+pkgname=$_pkgname-qt5-git
 pkgver=r8881
 pkgrel=1
-pkgdesc="Digital DJ mixing software. Git master branch (development/alpha)."
+pkgdesc="Digital DJ mixing software. Git master branch built with Qt 5 (development/alpha)."
 # TODO: Re-add aarch64 once we figure out a performant way to build it
 # See https://github.com/fwcd/arch-repo/pull/12 for details
-arch=('x86_64')
+arch=('i686' 'pentium4' 'x86_64')
 url="https://mixxx.org/"
 license=('GPL2')
 groups=('pro-audio')
@@ -33,11 +33,13 @@ depends=(
   'portaudio'
   'portmidi'
   'protobuf'
-  'qt6-declarative'
-  'qt6-5compat'
-  'qt6-svg'
-  'qt6-translations'
-  'qtkeychain-qt6'
+  'qt5-declarative'
+  'qt5-quickcontrols'
+  'qt5-quickcontrols2'
+  'qt5-svg'
+  'qt5-translations'
+  'qt5-x11extras'
+  'qtkeychain'
   'rubberband'
   'soundtouch'
   'taglib'
@@ -46,7 +48,7 @@ depends=(
   'upower'
   'wavpack'
 )
-makedepends=('git' 'lv2' 'qt6-tools' 'cmake' 'ninja' 'gtest' 'benchmark')
+makedepends=('git' 'lv2' 'qt5-tools' 'cmake' 'ninja' 'gtest' 'benchmark')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+https://github.com/mixxxdj/$_pkgname.git"
@@ -67,7 +69,7 @@ prepare() {
   -DINSTALL_USER_UDEV_RULES=OFF \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
   -DOPTIMIZE=native \
-  -DQT6=ON \
+  -DQT6=OFF \
   -DBULK=ON \
   -DFAAD=ON \
   -DLILV=ON \

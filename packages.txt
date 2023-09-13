@@ -5,5 +5,6 @@ nqptp-git
 shairport-sync-git
 swift-bin
 mixxx-git
+mixxx-qt5-git
 paru
 yay
