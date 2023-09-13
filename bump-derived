@@ -25,7 +25,7 @@ for pkg in "${pkgs[@]}"; do
     cd "$pkg"
 
     updpkgsums
-    makepkg --nobuild --nodeps # Autobump VCS versions
+    makepkg --nobuild --noprepare --nodeps # Autobump VCS versions
     makepkg --printsrcinfo > .SRCINFO
   )
 done
