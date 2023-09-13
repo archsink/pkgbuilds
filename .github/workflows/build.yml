@@ -19,6 +19,8 @@ jobs:
           arch: x86_64
         - platform: linux/arm64
           arch: aarch64
+        - platform: linux/386
+          arch: pentium4
 
     steps:
     - uses: actions/checkout@v3
