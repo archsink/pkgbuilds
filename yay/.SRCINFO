@@ -11,6 +11,7 @@ pkgbase = yay
 	arch = armv6h
 	arch = aarch64
 	arch = riscv64
+	arch = powerpc64le
 	license = GPL3
 	makedepends = go>=1.19
 	depends = pacman>5
