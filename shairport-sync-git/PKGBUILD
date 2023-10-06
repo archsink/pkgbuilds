@@ -2,7 +2,7 @@
 # Maintainer: Johannes Arnold <johannes.arnold@stud.uni-hannover.de>
 _pkgname=shairport-sync
 pkgname=$_pkgname-git
-pkgver=4.3.2.dev.r43.gd9c7f0ae
+pkgver=4.3.2.dev.r49.gd7b36559
 pkgrel=1
 pkgdesc="AirPlay 2 audio player with multi-room playback"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64' 'riscv64' 'powerpc64le')
