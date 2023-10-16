@@ -1,6 +1,6 @@
 # Maintainer: Logan Sevcik <logan+aur@sevcik.email>
 pkgname=nqptp-git
-pkgver=1.2.4.r2.g2d4f870
+pkgver=1.2.5.dev.r10.gcfa8315
 pkgrel=1
 pkgdesc="A daemon that monitors timing data from PTP clocks"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64' 'riscv64' 'powerpc64le')
