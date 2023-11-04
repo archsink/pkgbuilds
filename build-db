@@ -18,7 +18,7 @@ builddir="$PWD/build"
 )
 
 echo "==> Setting up a package database"
-repo-add "$dbdir/fwcd.db.tar.gz" "$dbdir"/*.pkg.tar.*
+repo-add "$dbdir/archsink.db.tar.gz" "$dbdir"/*.pkg.tar.*
 
 echo "==> Replacing symlinks"
 (
