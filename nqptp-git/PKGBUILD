@@ -13,7 +13,8 @@ backup=()
 options=()
 source=("git+https://github.com/mikebrady/nqptp.git" 'nqptp.sysusers')
 noextract=()
-sha256sums=('SKIP' '7b9f14ae70bdc6151fc879d22e3ce9c27eef9233936ef690d31daface3f31b52')
+sha256sums=('SKIP'
+            '7b9f14ae70bdc6151fc879d22e3ce9c27eef9233936ef690d31daface3f31b52')
 
 _gitname="nqptp"
 

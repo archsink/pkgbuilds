@@ -1,7 +1,7 @@
 pkgbase = nqptp-git
 	pkgdesc = A daemon that monitors timing data from PTP clocks
 	pkgver = 1.2.5.dev.r10.gcfa8315
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mikebrady/nqptp#readme
 	arch = i686
 	arch = pentium4
@@ -17,6 +17,8 @@ pkgbase = nqptp-git
 	conflicts = nqptp
 	replaces = nqptp
 	source = git+https://github.com/mikebrady/nqptp.git
-	md5sums = SKIP
+	source = nqptp.sysusers
+	sha256sums = SKIP
+	sha256sums = 7b9f14ae70bdc6151fc879d22e3ce9c27eef9233936ef690d31daface3f31b52
 
 pkgname = nqptp-git
