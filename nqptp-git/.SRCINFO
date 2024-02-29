@@ -1,6 +1,6 @@
 pkgbase = nqptp-git
 	pkgdesc = A daemon that monitors timing data from PTP clocks
-	pkgver = 1.2.5.dev.r16.g32bfe78
+	pkgver = 1.2.5.dev.r18.gb8384c4
 	pkgrel = 1
 	url = https://github.com/mikebrady/nqptp#readme
 	arch = i686
