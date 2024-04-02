@@ -1,6 +1,6 @@
 pkgbase = alac-git
 	pkgdesc = a lossless audio codec developed by Apple and deployed on all of its platforms and devices
-	pkgver = 0.r26.96dd59d
+	pkgver = 0.r33.34b3279
 	pkgrel = 1
 	url = https://github.com/mikebrady/alac
 	arch = i686
