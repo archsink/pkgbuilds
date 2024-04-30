@@ -1,6 +1,6 @@
 pkgbase = mixxx-git
 	pkgdesc = Digital DJ mixing software. Git master branch (development/alpha).
-	pkgver = r9120
+	pkgver = r9123
 	pkgrel = 1
 	url = https://mixxx.org/
 	install = mixxx.install
