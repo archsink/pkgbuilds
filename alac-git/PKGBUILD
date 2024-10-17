@@ -1,7 +1,7 @@
 # Maintainer: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 _pkgname=alac
 pkgname=$_pkgname-git
-pkgver=0.r33.34b3279
+pkgver=0.r35.1832544
 pkgrel=1
 pkgdesc="a lossless audio codec developed by Apple and deployed on all of its platforms and devices"
 arch=('i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64' 'riscv64' 'powerpc64le')
