@@ -3,7 +3,7 @@
 # Contributor: regreddit <nik.martin@gmail.com>
 
 pkgname=mixxx-git
-pkgver=r9464
+pkgver=r9467
 pkgrel=1
 pkgdesc="Digital DJ mixing software. Git master branch (development/alpha)."
 # TODO: Re-add aarch64 once we figure out a performant way to build it
