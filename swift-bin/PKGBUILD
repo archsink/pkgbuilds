@@ -4,8 +4,8 @@
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>, youngunix <>
 
 pkgname=swift-bin
-pkgver=6.1
-pkgrel=2
+pkgver=6.1.1
+pkgrel=1
 pkgdesc="Binary builds of the Swift programming language"
 arch=('x86_64' 'aarch64')
 url="https://www.swift.org/"
@@ -23,8 +23,8 @@ _ubuntuminor=04
 source_x86_64=("https://download.swift.org/swift-$pkgver-release/ubuntu$_ubuntumajor$_ubuntuminor/swift-$pkgver-RELEASE/swift-$pkgver-RELEASE-ubuntu$_ubuntumajor.$_ubuntuminor.tar.gz")
 source_aarch64=("https://download.swift.org/swift-$pkgver-release/ubuntu$_ubuntumajor$_ubuntuminor-aarch64/swift-$pkgver-RELEASE/swift-$pkgver-RELEASE-ubuntu$_ubuntumajor.$_ubuntuminor-aarch64.tar.gz")
 
-sha256sums_x86_64=('7ae2d70dfcd1b36980e71ab68c89e346fd8f1edc81a852b17b5f7eecdda3a866')
-sha256sums_aarch64=('2801d6ff0fc2b854c4013f0352cb264136c0de68037c15a10957653c9d5daa2e')
+sha256sums_x86_64=('c1f098866a7e70bbd98adbcd039e107002bd2594bd95836c123e6984764988d2')
+sha256sums_aarch64=('fd4d1fc45017380410aa7e37319b89c5c7f7a8fe9e484c363443e71e060f8e1a')
 
 prepare() {
   case "$CARCH" in
