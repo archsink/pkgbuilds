@@ -4,7 +4,7 @@
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>, youngunix <>
 
 pkgname=swift-bin
-pkgver=6.1.1
+pkgver=6.1.2
 pkgrel=1
 pkgdesc="Binary builds of the Swift programming language"
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ _ubuntuminor=04
 source_x86_64=("https://download.swift.org/swift-$pkgver-release/ubuntu$_ubuntumajor$_ubuntuminor/swift-$pkgver-RELEASE/swift-$pkgver-RELEASE-ubuntu$_ubuntumajor.$_ubuntuminor.tar.gz")
 source_aarch64=("https://download.swift.org/swift-$pkgver-release/ubuntu$_ubuntumajor$_ubuntuminor-aarch64/swift-$pkgver-RELEASE/swift-$pkgver-RELEASE-ubuntu$_ubuntumajor.$_ubuntuminor-aarch64.tar.gz")
 
-sha256sums_x86_64=('c1f098866a7e70bbd98adbcd039e107002bd2594bd95836c123e6984764988d2')
-sha256sums_aarch64=('fd4d1fc45017380410aa7e37319b89c5c7f7a8fe9e484c363443e71e060f8e1a')
+sha256sums_x86_64=('ed40901b5bccf9022ff5d41425e2316f8e710a7e0c99717ba62080744e81fd66')
+sha256sums_aarch64=('50c602beffaeba1af467286a2fa304ae768184486ad05d11531e827d7531d99c')
 
 prepare() {
   case "$CARCH" in
