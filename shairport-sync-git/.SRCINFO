@@ -1,6 +1,6 @@
 pkgbase = shairport-sync-git
 	pkgdesc = AirPlay 2 audio player with multi-room playback
-	pkgver = 5.1.dev.r4.ge081e4a5
+	pkgver = 5.1.dev.r5.gf2ee95a3
 	pkgrel = 1
 	url = https://github.com/mikebrady/shairport-sync
 	arch = i686
