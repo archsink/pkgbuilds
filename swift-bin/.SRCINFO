@@ -1,6 +1,6 @@
 pkgbase = swift-bin
 	pkgdesc = Binary builds of the Swift programming language
-	pkgver = 6.3.2
+	pkgver = 6.3.3
 	pkgrel = 1
 	url = https://www.swift.org/
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = swift-bin
 	provides = swift-language
 	replaces = swift-language-bin
 	options = !strip
-	source_x86_64 = https://download.swift.org/swift-6.3.2-release/ubuntu2204/swift-6.3.2-RELEASE/swift-6.3.2-RELEASE-ubuntu22.04.tar.gz
-	sha256sums_x86_64 = 8f75740dc534d3b0a885aecd6a66274b37ba8ed52108b99cdcb0284f53d9eeed
-	source_aarch64 = https://download.swift.org/swift-6.3.2-release/ubuntu2204-aarch64/swift-6.3.2-RELEASE/swift-6.3.2-RELEASE-ubuntu22.04-aarch64.tar.gz
-	sha256sums_aarch64 = 08e32e29e9ced51bfbee3120793e9cbd6db0b4a92976a2d052e8270340b5ef8f
+	source_x86_64 = https://download.swift.org/swift-6.3.3-release/ubuntu2204/swift-6.3.3-RELEASE/swift-6.3.3-RELEASE-ubuntu22.04.tar.gz
+	sha256sums_x86_64 = 2c3ad7ad74ab7249d42f172ee3b40bc8a729893010b4a3384ba26f3c61e35008
+	source_aarch64 = https://download.swift.org/swift-6.3.3-release/ubuntu2204-aarch64/swift-6.3.3-RELEASE/swift-6.3.3-RELEASE-ubuntu22.04-aarch64.tar.gz
+	sha256sums_aarch64 = 3aa77d8e06cf236a2352f743648bacca7e6c3f05b0cb8b025786dc469202bea2
 
 pkgname = swift-bin
